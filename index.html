@@ -1,0 +1,49 @@
+<!doctype html>
+<meta charset="utf-8">
+<style media="screen">
+#text {
+  width: 25%;
+  float: left;
+  margin-top: 7%;
+  margin-left: 3%;
+}
+
+#viz {
+  width: 65%;
+  float: right;
+  margin: 0 auto;
+}
+</style>
+
+<script src="d3.js"></script>
+<script src="d3plus.js"></script>
+
+<div id="text">
+  <h2>Line chart</h2>
+  <p>The Line Plot shows data points as lines that change y-value over a continuous x-axis. Lines will be segmented if data points are not present for a give x value.</p>
+  <a href="https://d3plus.org/examples/basic/9037371/">Line chart on D3plus</a>
+</div>
+
+<div id="viz"></div>
+
+<script>
+
+    // d3.json("data.json", function(error, ourdata) {
+    d3.json("data.json", function(error, ourdata) {
+      if (error) return console.error(error);
+      make_viz(ourdata);
+    });
+
+    function make_viz(data){
+      var visualization = d3plus.viz()
+          .container("#viz")
+          .data(data)
+          .type("line")
+          .id("name")
+          .text("name")
+          .y("value")
+          .x("year")
+          .draw()
+    }
+
+</script>
